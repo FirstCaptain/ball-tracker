@@ -10,6 +10,7 @@ using namespace cv;
 
 const int RIGHT = 1, LEFT = -1, ZERO = 0;
 
+// What side of the line is a point
 int directionOfPoint(Point A, Point B, Point P)
 {
     B.x -= A.x;
@@ -27,7 +28,7 @@ int directionOfPoint(Point A, Point B, Point P)
 
     return ZERO;
 }
-
+//hough lines to find the X white lines
 Mat find_regions(Mat input, Mat &output, Point2f &pt1, Point2f &pt2, Point2f &pt3, Point2f &pt4)
 {
     Mat gray, thresh, dst;
@@ -72,7 +73,7 @@ Mat find_regions(Mat input, Mat &output, Point2f &pt1, Point2f &pt2, Point2f &pt
             points2o.push_back(pt2);
         }
     }
-
+    // clean up to average line
     cv::Point2f sum1 = std::accumulate(points1.begin(), points1.end(), cv::Point2f(0.0f, 0.0f), std::plus<cv::Point2f>());
     pt1 = sum1 / float(points1.size());
 
