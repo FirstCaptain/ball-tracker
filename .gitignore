@@ -1,0 +1,6 @@
+app/src/*.o
+*.png
+*.MOV
+.vscode/
+.sconsign.dblite
+test
